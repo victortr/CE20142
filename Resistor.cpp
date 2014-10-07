@@ -7,7 +7,7 @@
 
 using namespace std;
 
-//Resistor: <nome> <nó1> <nó2> <Resistência>
+//Resistor: <nome> <nÃ³1> <nÃ³2> <ResistÃªncia>
 Resistor::Resistor(ifstream &arq)
 {
 	m_erro = false;
@@ -25,15 +25,26 @@ Resistor::Resistor(ifstream &arq)
 			case 0: arq >> m_nome;		break;
 			case 1: arq >> m_nome_a;	break;
 			case 2: arq >> m_nome_b;	break;
-			case 3: arq >> m_R;			break;
-			default:arq >> m_ignora;		break;
+			case 3: arq >> m_R1;		break;
+			case 4: arq >> m_R2;		break;
+			case 5: arq >> m_R3;		break;
+			case 6: arq >> m_R4;		break;
+			case 7: arq >> m_R5;		break;
+			case 8: arq >> m_R6;		break;
+			case 9: arq >> m_R7;		break;
+			case 10: arq >> m_R8;		break;
+			default:arq >> m_ignora;	break;
 		}
 		i++;
 	}
 	arq.ignore();
-	if(i!=4)
+	if (i>4)
 	{
-		cout<< m_nome <<": Numero de parametros errado " << i << "/4"<<endl;
+		/* code */
+	}
+	if(i>10)
+	{
+		cout<< m_nome <<": Numero de parametros errado " << i << "/10"<<endl;
 		arq.close();
 		m_erro = true;
 	}

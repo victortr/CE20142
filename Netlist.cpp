@@ -69,7 +69,6 @@ bool Netlist::carregar(ifstream &arq)
 				//arq.ignore();
 				elemento = new Corrente(arq);
 				break;
-			
 			case 'E':			
 				//arq.ignore();
 				elemento = new Tensaotensao(arq);
@@ -86,7 +85,6 @@ bool Netlist::carregar(ifstream &arq)
 				//arq.ignore();
 				elemento = new Tensaocorrente(arq);
 				break;
-
 			case 'W':
 			case 'M':			
 				//arq.ignore();

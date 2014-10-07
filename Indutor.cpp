@@ -41,6 +41,16 @@ Indutor::Indutor(ifstream &arq)
 	cout<<m_nome<<": "<<m_nome_a<<" "<<m_nome_b<<" "<<m_L<<endl;
 }
 
+double Indutor::getIndutancia()
+{
+    return this->m_L;
+}
+
+int Indutor::getMx()
+{
+    return this->m_x;
+}
+
 void Indutor::associaMatriz(Matriz *matriz)
 {
 	m_matriz = matriz;

@@ -1,22 +1,20 @@
-#ifndef INDUTOR_H
-#define INDUTOR_H
+#ifndef ACOPLAMENTO_H
+#define ACOPLAMENTO_H
 
 #include <fstream>
 #include <string>
 #include "Elemento.h"
+#include "Indutor.h"
 
 //C<nome> <nó1> <nó2> <Capacitância>
-class Indutor : public Elemento
+class Acoplamento : public Elemento
 {
-	double m_L;
+	double m_C;
 		
 public:
-	Indutor(std::ifstream &arq);
+	Acoplamento(QString nome, Indutor* l1, Indutor* l2, double m);
 
 	//*****METODOS VIRTUAIS*****
-	void associaMatriz(Matriz *matriz);
-	int getMx();
-	double getIndutancia();
 	void estampaPO();
 	void estampaBE(double tempo, double passo);
 	void estampaGEAR(double tempo, double passo);
