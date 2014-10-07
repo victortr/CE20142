@@ -6,7 +6,7 @@
 
 class Resistor : public Elemento
 {
-	double m_R;
+	double m_R[8];
 	
 public:
 	Resistor(std::ifstream &arq);

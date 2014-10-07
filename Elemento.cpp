@@ -10,12 +10,37 @@ Elemento::~Elemento()
 }
 
 //resistor
-void Elemento::estampaPrimR(int a,int b, double R)
+void Elemento::estampaPrimR(int a,int b, double R[8])
 {
-	m_matriz->m_elemento[a][a] +=  1/R;
-	m_matriz->m_elemento[b][b] +=  1/R;
-	m_matriz->m_elemento[a][b] += -1/R;
-	m_matriz->m_elemento[b][a] += -1/R;
+	if (R[1] == 0 && R[2] == 0 && R[3] == 0 && R[4] == 0 && R[5] == 0 && R[6] == 0 && R[7] == 0)
+	{
+	m_matriz->m_elemento[a][a] +=  1/R[0];
+	m_matriz->m_elemento[b][b] +=  1/R[0];
+	m_matriz->m_elemento[a][b] += -1/R[0];
+	m_matriz->m_elemento[b][a] += -1/R[0];
+	}
+
+	else
+	{
+		double G0 = 0;
+		double I0 = 0;
+		double *solucao = getSolucao(0);
+
+		for (int i = 0; i < 7; ++i)
+		{
+			G0 += R[i]*i*pow(solucao[a] - solucao[b], i-1);
+			I0 += R[i]*pow(solucao[a] - solucao[b], i);
+		}
+		I0 -= G0;
+	m_matriz->m_elemento[a][a] +=  G0;
+	m_matriz->m_elemento[b][b] +=  G0;
+	m_matriz->m_elemento[a][b] += -G0;
+	m_matriz->m_elemento[b][a] += -G0;
+
+	m_matriz->m_elemento[a][m_matriz->m_numVariaveis+1] +=  I0;
+	m_matriz->m_elemento[b][m_matriz->m_numVariaveis+1] += -I0;
+
+	}
 }
 
 //fonte tensao controlada a tensao
