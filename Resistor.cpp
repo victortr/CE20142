@@ -31,26 +31,14 @@ Resistor::Resistor(ifstream &arq)
             case 0: arq >> m_nome;      	break;
             case 1: arq >> m_nome_a;        break;
             case 2: arq >> m_nome_b;        break;
-            case 3: arq >> m_R[0]; m_R[1] = 1;          break;
- //           case 4: arq >> m_R[1];          break;
-
-
-//            if (arq >> m_R[1])
-//            {
-//                if (arq >> m_R[2])
-//                {
-//
-//                }
-//                else {m_R[2] =0;}
-//            }
-//            else {m_R[1] = 0;}
-//                            m_R[1] = 1;
-//                            m_R[2] = 0.0;
-//                            m_R[3] = 0.0;
-//                            m_R[4] = 0.0;
-//                            m_R[5] = 0.0;
-//                            m_R[6] = 0.0;
-//                            m_R[7] = 0.0;
+            case 3: arq >> m_R[0];          break;
+            case 4: arq >> m_R[1];          break;
+            case 5: arq >> m_R[2];          break;
+            case 6: arq >> m_R[3];          break;
+            case 7: arq >> m_R[4];          break;
+            case 8: arq >> m_R[5];          break;
+            case 9: arq >> m_R[6];          break;
+            case 10: arq >> m_R[7];          break;
             default:arq >> m_ignora;		break;
 		}
 		i++;
