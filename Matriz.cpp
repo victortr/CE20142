@@ -1,4 +1,4 @@
-// MATRIZ.C
+﻿// MATRIZ.C
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -45,7 +45,7 @@ bool Matriz::resolver()
       }
     }
     if (fabs(t)<TOLG) {
-		printf("Sistema singular.\n");
+//		printf("Sistema singular.\n");
 		return false;
     }
     for (j=m_numVariaveis+1; j>i; j--) {  /* Ponha j>0 em vez de j>i para melhor visualizacao */

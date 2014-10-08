@@ -61,7 +61,8 @@ void Capacitor::associaMatriz(Matriz *matriz)
 
 void Capacitor::estampaPO()
 {
-	estampaPrimR(m_a,m_b,1E9);
+    double R[8] = {1E9, 0, 0, 0, 0, 0, 0, 0};
+    estampaPrimR(m_a,m_b,R);
 }
 
 void Capacitor::estampaBE(double tempo, double passo)
@@ -75,9 +76,11 @@ void Capacitor::estampaBE(double tempo, double passo)
 	R = passo/m_C;
 	I = m_C*V0/passo;
 
-	estampaPrimR(m_a,m_b,R);
+   double R1[8] = {R, 0, 0, 0, 0, 0, 0, 0};
+
+    estampaPrimR(m_a,m_b,R1);
 	//corrente no sentido b->a
-	estampaPrimI(m_a,m_b,-I);
+    estampaPrimI(m_a,m_b,-I);
 
 }
 
@@ -101,8 +104,9 @@ void Capacitor::estampaGEAR(double tempo, double passo)
 	R = (2*passo)/(3*m_C);
 	I = (2*m_C*V0)/passo - (m_C*V1)/(2*passo);
 	
-	
-	estampaPrimR(m_a,m_b,R);
+    double R1[8] = {R, 0, 0, 0, 0, 0, 0, 0};
+
+    estampaPrimR(m_a,m_b,R1);
 	//A fonte de corrente aparece no sentido b->a
 	estampaPrimI(m_a,m_b,-I);
 }

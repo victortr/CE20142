@@ -85,7 +85,9 @@ void Diodo::estampaPO()
 	G0 = (m_Is/m_Vt)*exp(Vn/m_Vt);
 	I0 = m_Is * ( exp(Vn/m_Vt) - 1 ) - G0*Vn; 
 
-	estampaPrimR(m_a,m_b,1/G0);
+    double G[8] = {1/G0, 0, 0, 0, 0, 0, 0, 0};
+
+    estampaPrimR(m_a,m_b,G);
 	estampaPrimI(m_a,m_b,I0);
 }
 

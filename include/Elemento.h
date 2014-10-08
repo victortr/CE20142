@@ -1,4 +1,4 @@
-#ifndef ELEMENTO_H
+﻿#ifndef ELEMENTO_H
 #define ELEMENTO_H
 
 
@@ -16,7 +16,6 @@ struct s_indutores {
     int m_no_x;
     double m_l;
     };
-
 
 class Elemento
 {
@@ -36,7 +35,7 @@ public:
 	~Elemento();
 
 	//resistor
-	void estampaPrimR(int a,int b, double R);
+    void estampaPrimR(int a, int b, double R[8]);
 
 	//fonte tensao controlada a tensao
 	void estampaPrimE(int a, int b, int c, int d, int x, double Av, double R_serie = 0);
