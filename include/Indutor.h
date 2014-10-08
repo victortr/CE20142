@@ -5,7 +5,6 @@
 #include <string>
 #include "Elemento.h"
 
-//C<nome> <nó1> <nó2> <Capacitância>
 class Indutor : public Elemento
 {
 	double m_L;
@@ -16,7 +15,7 @@ public:
 	//*****METODOS VIRTUAIS*****
 	void associaMatriz(Matriz *matriz);
 	int getMx();
-	double getIndutancia();
+    std::string getNome();
 	void estampaPO();
 	void estampaBE(double tempo, double passo);
 	void estampaGEAR(double tempo, double passo);

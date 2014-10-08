@@ -25,14 +25,7 @@ Resistor::Resistor(ifstream &arq)
 			case 0: arq >> m_nome;		break;
 			case 1: arq >> m_nome_a;	break;
 			case 2: arq >> m_nome_b;	break;
-			case 3: arq >> m_R1;		break;
-			case 4: arq >> m_R2;		break;
-			case 5: arq >> m_R3;		break;
-			case 6: arq >> m_R4;		break;
-			case 7: arq >> m_R5;		break;
-			case 8: arq >> m_R6;		break;
-			case 9: arq >> m_R7;		break;
-			case 10: arq >> m_R8;		break;
+            case 3: arq >> m_R;		break;
 			default:arq >> m_ignora;	break;
 		}
 		i++;
@@ -61,15 +54,15 @@ void Resistor::associaMatriz(Matriz *matriz)
 
 void Resistor::estampaPO()
 {
-	estampaPrimR(m_a,m_b,m_R);
+    estampaPrimR(m_a,m_b,m_R);
 }
 
 void Resistor::estampaBE(double tempo, double passo)
 {
-	estampaPrimR(m_a,m_b,m_R);
+    estampaPrimR(m_a,m_b,m_R);
 }
 
 void Resistor::estampaGEAR(double tempo, double passo)
 {
-	estampaPrimR(m_a,m_b,m_R);
+    estampaPrimR(m_a,m_b,m_R);
 }

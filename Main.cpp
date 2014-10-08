@@ -9,47 +9,21 @@
 #include "Matriz.h"
 #include "Netlist.h"
 
+
 int main(int argc, char **argv)
 {
+    //Limpando lista de indutores
 	using namespace std;
+    int i; extern int g_t;
+    for(i=0; i<TAM_MAX; i++)
+    {
+        g_listaIndutores[i].m_nome = "";
+        g_listaIndutores[i].m_no_x = 0;
+        g_listaIndutores[i].m_l = 0;
+    }
+    g_t = 0;
 
-	/*
-	Matriz matriz;
 
-	matriz.m_elemento[1][1] = 1;
-	matriz.m_elemento[1][2] = 1;
-	matriz.m_elemento[1][3] = 3;
-
-	matriz.m_elemento[2][1] = 1;
-	matriz.m_elemento[2][2] = -1;
-	matriz.m_elemento[2][3] = 1;
-
-	matriz.adVariavel("x");
-	matriz.adVariavel("y");
-
-	matriz.resolver();
-	
-	//matriz.gravaSolucao();
-	matriz.mostrarSolucao();
-
-	double *sol = matriz.getSolucao(0);
-	for(int i = 0;i<=matriz.m_numVariaveis;i++)
-	{
-		cout<<sol[i]<<endl;
-	}
-
-	sol = new double[matriz.m_numVariaveis+1];
-
-	matriz.gravaSolucao();
-	matriz.copiaSolucao(1,sol);
-
-	//sol = matriz.getSolucao(0);
-	for(i = 0;i<=matriz.m_numVariaveis;i++)
-	{
-		cout<<sol[i]<<endl;
-	}
-	*/
-	///*
 	cout<<"Programa de analise de circuitos no tempo"<<endl;
 	cout<<"Trabalho de Circuitos Eletricos II. 2009/2"<<endl;
 	cout<<"Aluno: Alexandre Faria de Melo"<<endl<<endl;
@@ -75,7 +49,7 @@ int main(int argc, char **argv)
 	}
 	
 	ofstream ofs (ArqOut.c_str(), ofstream::out);
-	Netlist net;
+    Netlist net;
 
 	if(!net.carregar(ifs))
 	{

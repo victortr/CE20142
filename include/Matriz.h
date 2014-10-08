@@ -8,6 +8,15 @@
  * Define a classe Matriz, que representa um sistema na forma matricial.
  */
 
+#define TAM_MAX 50
+
+struct s_indutores {
+    std::string m_nome;
+    int m_no_x;
+    double m_l;
+    };
+
+s_indutores g_listaIndutores[TAM_MAX];
 
 class Matriz 
 {

@@ -41,9 +41,9 @@ Indutor::Indutor(ifstream &arq)
 	cout<<m_nome<<": "<<m_nome_a<<" "<<m_nome_b<<" "<<m_L<<endl;
 }
 
-double Indutor::getIndutancia()
+std::string Indutor::getNome()
 {
-    return this->m_L;
+    return this->m_nome;
 }
 
 int Indutor::getMx()
@@ -53,6 +53,7 @@ int Indutor::getMx()
 
 void Indutor::associaMatriz(Matriz *matriz)
 {
+    extern int g_t;
 	m_matriz = matriz;
 	m_a = matriz->adVariavel(m_nome_a);
 	m_b = matriz->adVariavel(m_nome_b);
@@ -63,6 +64,10 @@ void Indutor::associaMatriz(Matriz *matriz)
 	string nomeVar = "j";
 	nomeVar.append(m_nome);
 	m_x = matriz->adVariavel(nomeVar);
+    g_listaIndutores[g_t].m_no_x = m_x;
+    g_listaIndutores[g_t].m_l = m_L;
+    g_listaIndutores[g_t].m_nome = m_nome;
+    g_t++;
 }
 
 void Indutor::estampaPO()

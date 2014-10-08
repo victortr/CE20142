@@ -6,16 +6,21 @@
 #include "Elemento.h"
 #include "Indutor.h"
 
-//C<nome> <nó1> <nó2> <Capacitância>
 class Acoplamento : public Elemento
 {
-	double m_C;
+    double m_k;
+    std::string m_l1;
+    std::string m_l2;
+    int l1x, l2x;
+    double l1l, l2l;
+
 		
 public:
-	Acoplamento(QString nome, Indutor* l1, Indutor* l2, double m);
+    Acoplamento(std::ifstream &arq);
 
 	//*****METODOS VIRTUAIS*****
-	void estampaPO();
+    void associaMatriz(Matriz *matriz);
+    void estampaPO();
 	void estampaBE(double tempo, double passo);
 	void estampaGEAR(double tempo, double passo);
 	//void estampaTRAP(Matriz *matriz,);

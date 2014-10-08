@@ -12,6 +12,7 @@
 #include "Resistor.h"
 #include "Capacitor.h"
 #include "Indutor.h"
+#include "Acoplamento.h"
 
 #include "Diodo.h"
 #include "Mos.h"
@@ -94,6 +95,10 @@ bool Netlist::carregar(ifstream &arq)
 				//arq.ignore();
 				elemento = new Diodo(arq);
 				break;
+            case 'K':
+                //arq.ignore();
+                elemento = new Acoplamento(arq);
+                break;
 			default:
 				arq.ignore(MAX_LINHA,'\n');
 				break;
