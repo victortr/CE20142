@@ -147,11 +147,11 @@ void Netlist::newtonRaphson(bool po, double t,double passo)
 	int iter_nr,nr;
 	
 	nr = 0;
-	//cout<<"NR"<<endl;
+    //cout<<"NR"<<endl;
 	while (!convergiu && nr < MAX_NR)
 	{
 		
-		//cout<<"Tentativa "<<nr<<":"<<endl;
+        //cout<<"Tentativa "<<nr<<":"<<endl;
 		
 		//RECALCULA APROXIMACAO DA SOLUCAO INICIAL
 		if(nr!=0)
@@ -163,7 +163,7 @@ void Netlist::newtonRaphson(bool po, double t,double passo)
 		double *solAnterior = new double[m_matriz.m_numVariaveis+1];
 		while(!convergiu && iter_nr < MAX_ITR_NR)
 		{
-			//cout<<"Iteracao "<<iter_nr<<":"<<endl;
+            //cout<<"Iteracao "<<iter_nr<<":"<<endl;
 			
 			m_matriz.copiaSolucao(0,solAnterior);
 			m_matriz.reset();
@@ -201,11 +201,11 @@ void Netlist::newtonRaphson(bool po, double t,double passo)
 			}
 			iter_nr++;
 
-           // m_matriz.mostrarSolucao();
-			//cin.sync();cin.get();
+            //m_matriz.mostrarSolucao();
+            //cin.sync();cin.get();
 
 		}
-        m_matriz.mostrarSolucao();
+        //m_matriz.mostrarSolucao();
 		nr++;
 	}
 	if(!convergiu)
