@@ -9,9 +9,12 @@
 #include "Matriz.h"
 #include "Netlist.h"
 
+s_indutores g_listaIndutores[TAM_MAX];
+int g_t;
 
 int main(int argc, char **argv)
 {
+
     //Limpando lista de indutores
 	using namespace std;
     int i; extern int g_t;

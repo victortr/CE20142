@@ -56,7 +56,7 @@ void Acoplamento::associaMatriz(Matriz *matriz)
 {
     extern s_indutores g_listaIndutores[TAM_MAX];
     int i = 0;
-    for(i = 0; i < 50; i++)
+    for(i = 0; i < TAM_MAX; i++)
     {
         if (m_l1 == g_listaIndutores[i].m_nome)
         {
@@ -64,8 +64,10 @@ void Acoplamento::associaMatriz(Matriz *matriz)
             l1l = g_listaIndutores[i].m_l;
         }
         if (m_l2 == g_listaIndutores[i].m_nome)
+        {
             l2x = g_listaIndutores[i].m_no_x;
             l2l = g_listaIndutores[i].m_l;
+        }
     }
 }
 

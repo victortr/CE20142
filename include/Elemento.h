@@ -11,6 +11,12 @@
 *	Define a classe que represanta um elemento do netlist
 */
 
+struct s_indutores {
+    std::string m_nome;
+    int m_no_x;
+    double m_l;
+    };
+
 
 class Elemento
 {

@@ -54,6 +54,7 @@ int Indutor::getMx()
 void Indutor::associaMatriz(Matriz *matriz)
 {
     extern int g_t;
+    extern s_indutores g_listaIndutores[TAM_MAX];
 	m_matriz = matriz;
 	m_a = matriz->adVariavel(m_nome_a);
 	m_b = matriz->adVariavel(m_nome_b);
