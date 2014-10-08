@@ -1,4 +1,4 @@
-//NETLIST.C
+﻿//NETLIST.C
 
 #include <iostream>
 #include <fstream>
@@ -27,6 +27,7 @@
 #include "Correntecorrente.h"
 #include "Correntetensao.h"
 #include "Matriz.h"
+
 
 using namespace std;
 
@@ -70,6 +71,7 @@ bool Netlist::carregar(ifstream &arq)
 				//arq.ignore();
 				elemento = new Corrente(arq);
 				break;
+			
 			case 'E':			
 				//arq.ignore();
 				elemento = new Tensaotensao(arq);
@@ -86,19 +88,20 @@ bool Netlist::carregar(ifstream &arq)
 				//arq.ignore();
 				elemento = new Tensaocorrente(arq);
 				break;
+
 			case 'W':
 			case 'M':			
 				//arq.ignore();
 				elemento = new Mos(arq);
 				break;
-			case 'D':			
-				//arq.ignore();
-				elemento = new Diodo(arq);
-				break;
             case 'K':
                 //arq.ignore();
                 elemento = new Acoplamento(arq);
                 break;
+			case 'D':			
+				//arq.ignore();
+				elemento = new Diodo(arq);
+				break;
 			default:
 				arq.ignore(MAX_LINHA,'\n');
 				break;
@@ -198,11 +201,11 @@ void Netlist::newtonRaphson(bool po, double t,double passo)
 			}
 			iter_nr++;
 
-			//m_matriz.mostrarSolucao();
+           // m_matriz.mostrarSolucao();
 			//cin.sync();cin.get();
 
 		}
-		//m_matriz.mostrarSolucao();
+        m_matriz.mostrarSolucao();
 		nr++;
 	}
 	if(!convergiu)
@@ -210,6 +213,7 @@ void Netlist::newtonRaphson(bool po, double t,double passo)
 		cout<<"Newton-Raphson nao convergiu apos "<<MAX_NR<<" tentativas e "<<MAX_ITR_NR<<" iteracoes"<<endl;
 		cout<<endl<<"Aperte enter para fechar."<<endl;
 		cin.sync();
+
 		cin.get();
 		exit(-1);
 	}
@@ -229,28 +233,34 @@ void Netlist::analiseTempo(ofstream &arq)
 	int numPasso,i;
 	
 	//IMPRIME O CABECALHO COM OS NOMES DAS VARIAVEIS
-	arq<<"t ";
-	for(i=1;i<=m_matriz.m_numVariaveis;i++)
-	{
-		arq<<m_matriz.getNomeVariavel(i)<<" ";
-	}
-	arq<<endl;
+    arq<<"t ";
+    for(i=1;i<=m_matriz.m_numVariaveis;i++)
+    {
+        arq<<m_matriz.getNomeVariavel(i)<<" ";
+    }
+    arq<<endl;
 
 	for(t=0,numPasso=0; t<= m_t; t+=passo,numPasso++)
 	{
 		newtonRaphson(false,t,passo);
+ //       cout << "estou aqui antes de td" << endl;
 		
 		//IMPRIME SOLUCAO
+//        cout << numPasso << endl;
+//        cout << m_passosInternos << endl;
 		if(numPasso%m_passosInternos == 0)
 		{
 			arq<<t<<" ";
-			for(i=1;i<=m_matriz.m_numVariaveis;i++)
+ //           cout << "estou aqui antes do for" << endl;
+            for(i=1;i<=m_matriz.m_numVariaveis;i++)
 			{
-				arq<<m_matriz.getSolucao(1)[i]<<" ";
+                arq<<m_matriz.getSolucao(1)[i]<<" ";
+ //               cout << "estou aqui dentro do for"  << endl;
+
 			}
-			arq<<endl;
-			//debug
-			//m_matriz.mostrarSolucao();
+            arq<<endl;
+            //debug
+           // m_matriz.mostrarSolucao();
 		}
 	}
 }

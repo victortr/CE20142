@@ -1,21 +1,63 @@
-#include <iostream>
+﻿#include <iostream>
 #include "Elemento.h"
 #include "Matriz.h"
+#include <math.h>
 /* 
 *	Define a classe que represanta um elemento do netlist
 */
+using namespace std;
 
 Elemento::~Elemento()
 {
 }
 
 //resistor
-void Elemento::estampaPrimR(int a,int b, double R)
+void Elemento::estampaPrimR(int a, int b, double R[])
 {
-	m_matriz->m_elemento[a][a] +=  1/R;
-	m_matriz->m_elemento[b][b] +=  1/R;
-	m_matriz->m_elemento[a][b] += -1/R;
-	m_matriz->m_elemento[b][a] += -1/R;
+    if (R[1] == 0 && R[2] == 0 && R[3] == 0 && R[4] == 0 && R[5] == 0 && R[6] == 0 && R[7] == 0)
+	{
+	m_matriz->m_elemento[a][a] +=  1/R[0];
+	m_matriz->m_elemento[b][b] +=  1/R[0];
+	m_matriz->m_elemento[a][b] += -1/R[0];
+	m_matriz->m_elemento[b][a] += -1/R[0];
+	}
+
+	else
+	{
+        double G0 = 0;
+        double I0 = 0;
+        double *solucao = m_matriz->getSolucao(0);
+
+        for(int i = 1; i<4; i++)
+        {
+            std::cout << solucao[i] << std::endl;
+        }
+
+//        std::cout << std::endl << std::endl;
+//        cout << "solucao [" << a << "]" << endl;
+//        cout << solucao[a] << endl;
+//        cout << "solucao [" << b << "]" << endl;
+//        cout << solucao[b] << endl;
+
+        for (int i = 0; i < 8; ++i)
+		{
+              G0 += R[i]*i*pow(solucao[a] - solucao[b], i-1);
+              I0 += R[i]*pow(solucao[a] - solucao[b], i);
+		}
+
+      I0 -= G0*(solucao[a] - solucao[b]);
+
+        std::cout << "G0 :" << G0 << std::endl<< "I0 :" << I0 << std::endl << std::endl;
+
+	m_matriz->m_elemento[a][a] +=  G0;
+	m_matriz->m_elemento[b][b] +=  G0;
+	m_matriz->m_elemento[a][b] += -G0;
+	m_matriz->m_elemento[b][a] += -G0;
+
+    m_matriz->m_elemento[a][m_matriz->m_numVariaveis+1] +=   -I0;
+    m_matriz->m_elemento[b][m_matriz->m_numVariaveis+1] +=    I0;
+
+	}
 }
 
 //fonte tensao controlada a tensao
