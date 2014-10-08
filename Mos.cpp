@@ -1,4 +1,4 @@
-//Resistor.cpp
+﻿//Resistor.cpp
 
 #include <stdio.h>
 #include <iostream>
@@ -155,9 +155,13 @@ void Mos::estampaBase(double tempo,double passo)
 	if(m_tipo == "NMOS")
 	{
 		//fontes controladas por Tensao de D(m_a) para S(m_c)
-		estampaPrimG(m_a,m_c,m_b,m_c,Gm);
-		estampaPrimG(m_a,m_c,m_a,m_c,Gds);
-		estampaPrimG(m_a,m_c,m_d,m_c,Gmb);
+        double Gm1[8] = {Gm, 0, 0, 0, 0, 0, 0, 0};
+        double Gm2[8] = {Gds, 0, 0, 0, 0, 0, 0, 0};
+        double Gm3[8] = {Gmb, 0, 0, 0, 0, 0, 0, 0};
+
+        estampaPrimG(m_a,m_c,m_b,m_c,Gm1);
+        estampaPrimG(m_a,m_c,m_a,m_c,Gm2);
+        estampaPrimG(m_a,m_c,m_d,m_c,Gm3);
 
 		//fonte independente de D para S
 		estampaPrimI(m_a,m_c,Ig);
@@ -166,9 +170,12 @@ void Mos::estampaBase(double tempo,double passo)
 	else if(m_tipo == "PMOS")
 	{
 		//fontes controladas por Tensao de S(m_c) para D(m_a)
-		estampaPrimG(m_a,m_c,m_b,m_c,-Gm);
-		estampaPrimG(m_a,m_c,m_a,m_c,-Gds);
-		estampaPrimG(m_a,m_c,m_d,m_c,-Gmb);
+        double Gm4[8] = {-Gm, 0, 0, 0, 0, 0, 0, 0};
+        double Gm5[8] = {-Gds, 0, 0, 0, 0, 0, 0, 0};
+        double Gm6[8] = {-Gmb, 0, 0, 0, 0, 0, 0, 0};
+        estampaPrimG(m_a,m_c,m_b,m_c,Gm4);
+        estampaPrimG(m_a,m_c,m_a,m_c,Gm5);
+        estampaPrimG(m_a,m_c,m_d,m_c,Gm6);
 
 		//fonte independente de D para S
 		estampaPrimI(m_a,m_c,-Ig);

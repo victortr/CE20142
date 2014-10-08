@@ -1,4 +1,4 @@
-#ifndef TENSAOCORRENTE_H
+﻿#ifndef TENSAOCORRENTE_H
 #define TENSAOCORRENTE_H
 
 
@@ -7,7 +7,7 @@
 //Corrente controlada por corrente
 class Tensaocorrente : public Elemento
 {
-	double m_Rm;
+    double m_Rm[8];
 	
 public:
 	Tensaocorrente(std::ifstream &arq);

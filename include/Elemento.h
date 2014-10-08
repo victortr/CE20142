@@ -35,19 +35,19 @@ public:
 	~Elemento();
 
 	//resistor
-    void estampaPrimR(int a, int b, double R[8]);
+    void estampaPrimR(int a,int b, double R[]);
 
 	//fonte tensao controlada a tensao
-	void estampaPrimE(int a, int b, int c, int d, int x, double Av, double R_serie = 0);
+    void estampaPrimE(int a, int b, int c, int d, int x, double Av[], double R_serie = 0);
 	
 	//fonte de corrente controlada a corrente
-	void estampaPrimF(int a, int b, int c, int d, int x, double Ai);
+    void estampaPrimF(int a, int b, int c, int d, int x, double Ai[]);
 	
 	//fonte de corrente controlada a tensao
-	void estampaPrimG(int a, int b, int c, int d, double Gm);
+    void estampaPrimG(int a, int b, int c, int d, double Gm[]);
 	
 	//fonte de tensao controlada a corrente
-	void estampaPrimH(int a, int b, int c, int d, int x, int y, double Rm);
+    void estampaPrimH(int a, int b, int c, int d, int x, int y, double Rm[]);
 
 	//fonte de corrente
 	void estampaPrimI(int a, int b, double I);

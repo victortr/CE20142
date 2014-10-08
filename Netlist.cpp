@@ -28,7 +28,6 @@
 #include "Correntetensao.h"
 #include "Matriz.h"
 
-
 using namespace std;
 
 Netlist::Netlist()
@@ -201,10 +200,14 @@ void Netlist::newtonRaphson(bool po, double t,double passo)
 			}
 			iter_nr++;
 
-           // m_matriz.mostrarSolucao();
-			//cin.sync();cin.get();
+    //        m_matriz.mostrar();
+
+     //       m_matriz.mostrarSolucao();
+    //        cin.sync();cin.get();
 
 		}
+        m_matriz.mostrar();
+        cout << endl << endl;
         m_matriz.mostrarSolucao();
 		nr++;
 	}

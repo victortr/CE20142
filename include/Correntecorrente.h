@@ -1,4 +1,4 @@
-#ifndef CORRENTECORRENTE_H
+﻿#ifndef CORRENTECORRENTE_H
 #define CORRENTECORRENTE_H
 
 #include "Elemento.h"
@@ -6,7 +6,7 @@
 //Corrente controlada por corrente
 class Correntecorrente : public Elemento
 {
-	double m_Ai;
+    double m_Ai[8];
 	
 public:
 	Correntecorrente(std::ifstream &arq);
