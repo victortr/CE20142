@@ -1,4 +1,4 @@
-//NETLIST.C
+﻿//NETLIST.C
 
 #include <iostream>
 #include <fstream>
@@ -195,11 +195,11 @@ void Netlist::newtonRaphson(bool po, double t,double passo)
 			}
 			iter_nr++;
 
-			//m_matriz.mostrarSolucao();
+           // m_matriz.mostrarSolucao();
 			//cin.sync();cin.get();
 
 		}
-		//m_matriz.mostrarSolucao();
+        m_matriz.mostrarSolucao();
 		nr++;
 	}
 	if(!convergiu)
@@ -207,6 +207,7 @@ void Netlist::newtonRaphson(bool po, double t,double passo)
 		cout<<"Newton-Raphson nao convergiu apos "<<MAX_NR<<" tentativas e "<<MAX_ITR_NR<<" iteracoes"<<endl;
 		cout<<endl<<"Aperte enter para fechar."<<endl;
 		cin.sync();
+
 		cin.get();
 		exit(-1);
 	}
@@ -226,28 +227,34 @@ void Netlist::analiseTempo(ofstream &arq)
 	int numPasso,i;
 	
 	//IMPRIME O CABECALHO COM OS NOMES DAS VARIAVEIS
-	arq<<"t ";
-	for(i=1;i<=m_matriz.m_numVariaveis;i++)
-	{
-		arq<<m_matriz.getNomeVariavel(i)<<" ";
-	}
-	arq<<endl;
+    arq<<"t ";
+    for(i=1;i<=m_matriz.m_numVariaveis;i++)
+    {
+        arq<<m_matriz.getNomeVariavel(i)<<" ";
+    }
+    arq<<endl;
 
 	for(t=0,numPasso=0; t<= m_t; t+=passo,numPasso++)
 	{
 		newtonRaphson(false,t,passo);
+ //       cout << "estou aqui antes de td" << endl;
 		
 		//IMPRIME SOLUCAO
+//        cout << numPasso << endl;
+//        cout << m_passosInternos << endl;
 		if(numPasso%m_passosInternos == 0)
 		{
 			arq<<t<<" ";
-			for(i=1;i<=m_matriz.m_numVariaveis;i++)
+ //           cout << "estou aqui antes do for" << endl;
+            for(i=1;i<=m_matriz.m_numVariaveis;i++)
 			{
-				arq<<m_matriz.getSolucao(1)[i]<<" ";
+                arq<<m_matriz.getSolucao(1)[i]<<" ";
+ //               cout << "estou aqui dentro do for"  << endl;
+
 			}
-			arq<<endl;
-			//debug
-			//m_matriz.mostrarSolucao();
+            arq<<endl;
+            //debug
+           // m_matriz.mostrarSolucao();
 		}
 	}
 }
