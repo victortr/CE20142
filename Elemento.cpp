@@ -30,7 +30,7 @@ void Elemento::estampaPrimR(int a, int b, double R[])
 
         for(int i = 1; i<4; i++)
         {
-            std::cout << solucao[i] << std::endl;
+            //std::cout << solucao[i] << std::endl;
         }
 
 //        std::cout << std::endl << std::endl;
@@ -269,6 +269,17 @@ void Elemento::estampaPrimV(int a, int b, int x, double V, double R_serie)
 
 	m_matriz->m_elemento[x][x] += R_serie;
 	m_matriz->m_elemento[x][m_matriz->m_numVariaveis+1] += -V;
+}
+
+//acoplamento
+void Elemento::estampaPrimK(int x1, int x2, double V1, double V2, double M)
+{
+    m_matriz->m_elemento[x1][x2] += M;
+    m_matriz->m_elemento[x2][x1] += M;
+
+
+    m_matriz->m_elemento[x1][m_matriz->m_numVariaveis+1] += V2;
+    m_matriz->m_elemento[x2][m_matriz->m_numVariaveis+1] += V1;
 }
 
 bool Elemento::getErro()

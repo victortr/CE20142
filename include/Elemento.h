@@ -55,6 +55,9 @@ public:
 	//fonte de Tensao
 	void estampaPrimV(int a, int b, int x, double V, double R_serie = 0);
 
+    //Acoplamento
+    void estampaPrimK(int x2, int x1, double V1, double V2, double M);
+
 	//verifica se o elemento foi carregado corretamente
 	bool getErro();
 	

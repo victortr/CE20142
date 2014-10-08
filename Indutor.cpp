@@ -69,6 +69,7 @@ void Indutor::associaMatriz(Matriz *matriz)
     g_listaIndutores[g_t].m_l = m_L;
     g_listaIndutores[g_t].m_nome = m_nome;
     g_t++;
+    //cout<<"m_x : "<<m_x<<endl;
 }
 
 void Indutor::estampaPO()
