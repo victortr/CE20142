@@ -47,7 +47,7 @@ void Elemento::estampaPrimR(int a, int b, double R[])
 
       I0 -= G0*(solucao[a] - solucao[b]);
 
-        std::cout << "G0 :" << G0 << std::endl<< "I0 :" << I0 << std::endl << std::endl;
+        //std::cout << "G0 :" << G0 << std::endl<< "I0 :" << I0 << std::endl << std::endl;
 
 	m_matriz->m_elemento[a][a] +=  G0;
 	m_matriz->m_elemento[b][b] +=  G0;
@@ -160,13 +160,13 @@ void Elemento::estampaPrimG(int a, int b, int c, int d, double Gm[])
 {
     if (Gm[1] == 0 && Gm[2] == 0 && Gm[3] == 0 && Gm[4] == 0 && Gm[5] == 0 && Gm[6] == 0 && Gm[7] == 0)
     {
-        m_matriz->mostrar();
+    //m_matriz->mostrar();
     m_matriz->m_elemento[a][c] +=  Gm[0];
     m_matriz->m_elemento[b][d] +=  Gm[0];
     m_matriz->m_elemento[a][d] += -Gm[0];
     m_matriz->m_elemento[b][c] += -Gm[0];
-    cout << endl << endl;
-    m_matriz->mostrar();
+    //cout << endl << endl;
+    //m_matriz->mostrar();
     }
 
     else

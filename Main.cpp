@@ -1,6 +1,5 @@
 /**
- * Trabalho de Circuitos Eletricos II - 2009/2
- * Alexandre Faria de Melo
+ * Trabalho de Circuitos Eletricos II - 2014/2
  */
 
 #include <iostream>
@@ -28,9 +27,7 @@ int main(int argc, char **argv)
 
 
 	cout<<"Programa de analise de circuitos no tempo"<<endl;
-	cout<<"Trabalho de Circuitos Eletricos II. 2009/2"<<endl;
-	cout<<"Aluno: Alexandre Faria de Melo"<<endl<<endl;
-		
+    cout<<"Trabalho de Circuitos Eletricos II. 2014/2"<<endl<<endl;
 	cout<<"Digite o arquivo que contem o netlist: ";
 
 	string ArqIn,ArqOut;

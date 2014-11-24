@@ -200,23 +200,14 @@ void Netlist::newtonRaphson(bool po, double t,double passo)
 			}
 			iter_nr++;
 
-<<<<<<< HEAD
-    //        m_matriz.mostrar();
-
-     //       m_matriz.mostrarSolucao();
-    //        cin.sync();cin.get();
-
-		}
-        m_matriz.mostrar();
-        cout << endl << endl;
-        m_matriz.mostrarSolucao();
-=======
+//        m_matriz.mostrar();
+//        cout << endl << endl;
+//        m_matriz.mostrarSolucao();
             //m_matriz.mostrarSolucao();
             //cin.sync();cin.get();
 
 		}
         //m_matriz.mostrarSolucao();
->>>>>>> origin/master
 		nr++;
 	}
 	if(!convergiu)
